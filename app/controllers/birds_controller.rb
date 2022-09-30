@@ -1,4 +1,10 @@
 class BirdsController < ApplicationController
+  wrap_parameters format: []
+
+  def create
+  bird = Bird.create(params.permit(:name, :species))
+  render json: bird, status: :created
+end
 
   # GET /birds
   def index
